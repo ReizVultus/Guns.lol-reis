@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Atrelei e vi Vultus. Perfil e redes de Reis.">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Reis">
+  <meta property="og:description" content="Atrelei e vi Vultus.">
+  <link rel="icon" href="./vultus-cover.webp" type="image/webp">
+  <link rel="stylesheet" href="./profile.css">
+  <script src="./profile.js" defer></script>
+  <title>Reis · @reiss</title>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="Reis, início">REIS<span>.</span></a>
+      <button class="share" id="share" type="button" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m-4 4 4-4 4 4M5 13v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></svg>
+        Compartilhar
+      </button>
+      <p id="share-status" role="status"></p>
+    </header>
+
+    <main>
+      <div class="banner" aria-hidden="true"></div>
+      <div class="profile-layout">
+        <section class="identity" aria-labelledby="name">
+          <div class="avatar" aria-hidden="true">
+            <span>R</span>
+            <video id="avatar" muted loop playsinline preload="none" data-src="./Pfp.mp4"></video>
+          </div>
+          <p class="handle">@reiss</p>
+          <h1 id="name">Reis<span>.</span></h1>
+          <p class="bio">Atrelei e vi Vultus</p>
+          <p class="location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Web Hype
+          </p>
+        </section>
+
+        <nav class="socials" aria-label="Redes sociais">
+          <h2>Redes</h2>
+          <a href="https://open.spotify.com/user/31wlihlpgqliabzqszri4sft4yki" target="_blank" rel="noopener noreferrer">
+            <span>Spotify</span><span class="social-detail">Perfil</span>
+          </a>
+          <a href="https://www.tiktok.com/@reis_larp" target="_blank" rel="noopener noreferrer">
+            <span>TikTok</span><span class="social-detail">@reis_larp</span>
+          </a>
+          <a href="https://discord.com/users/1497798521833918576" target="_blank" rel="noopener noreferrer">
+            <span>Discord</span><span class="social-detail">@conquistariam</span>
+          </a>
+          <a href="https://github.com/ReizVultus" target="_blank" rel="noopener noreferrer">
+            <span>GitHub</span><span class="social-detail">@ReizVultus</span>
+          </a>
+          <a href="https://www.instagram.com/013._reis/" target="_blank" rel="noopener noreferrer">
+            <span>Instagram</span><span class="social-detail">@013._reis</span>
+          </a>
+        </nav>
+
+        <section class="player" aria-label="Reprodutor de música">
+          <img class="track-cover" src="./vultus-cover.webp" width="64" height="64" alt="">
+          <div class="track">
+            <label for="track-select">Faixa</label>
+            <select id="track-select" hidden>
+              <option value="./vultus.mp3" data-cover="./vultus-cover.webp">Vultus</option>
+              <option value="./Music%20laufei.mp3" data-cover="./foto%20musica.jpg">Low Cortisol</option>
+            </select>
+            <span id="track-title">Vultus</span>
+          </div>
+          <audio id="audio" src="./vultus.mp3" preload="metadata" controls></audio>
+          <div class="transport" hidden>
+            <span id="elapsed">0:00</span>
+            <input id="seek" type="range" min="0" max="1" value="0" step="0.1" aria-label="Posição na faixa" disabled>
+            <span id="duration">–:––</span>
+          </div>
+          <button class="play" id="play" type="button" aria-label="Reproduzir Vultus" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path class="play-symbol" d="M8 5v14l11-7z"/>
+              <path class="pause-symbol" d="M7 5h4v14H7zm6 0h4v14h-4z"/>
+            </svg>
+          </button>
+          <p class="player-message" id="player-message" role="status" hidden></p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <a href="https://guns.lol/reiss" target="_blank" rel="noopener noreferrer">guns.lol/reiss</a>
+    </footer>
+  </div>
+</body>
+</html>
