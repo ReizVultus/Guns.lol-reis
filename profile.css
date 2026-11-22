@@ -1,0 +1,188 @@
+:root {
+  color-scheme: dark;
+  font-family: "Satoshi", "Segoe UI", system-ui, sans-serif;
+  background: #101010;
+  color: #fff;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  padding: 1.25rem;
+  place-items: center;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  inset: -.75rem;
+  background: linear-gradient(#0004, #0005), #101010 url("./assets/images/profile-background.webp") center / cover no-repeat;
+  filter: blur(.32rem);
+  pointer-events: none;
+}
+
+h1, p { margin: 0; }
+a, button { color: inherit; }
+button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.profile { display: grid; gap: .9rem; width: min(100%, 40rem); }
+.identity, .player {
+  border: 1px solid #ffffff0f;
+  border-radius: 1.25rem;
+  box-shadow: 0 .75rem 2.75rem #0005;
+}
+
+.identity {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding: 2.15rem 1.25rem 2rem;
+  background: radial-gradient(ellipse at 50% 18%, #232323 0%, #161616 54%, #0e0e0e 100%);
+  text-align: center;
+}
+
+.avatar {
+  display: block;
+  width: 7.375rem;
+  height: 7.375rem;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #222;
+}
+
+h1 {
+  position: relative;
+  isolation: isolate;
+  margin-top: .75rem;
+  font-size: clamp(2.25rem, 6vw, 2.65rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.04em;
+  text-shadow: 0 0 1rem #fffc;
+}
+h1::before, h1::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -.45rem -.3rem;
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+h1::before {
+  background-image:
+    radial-gradient(circle at 12% 24%, #fff 0 1px, transparent 1.4px),
+    radial-gradient(circle at 74% 15%, #fff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 44% 87%, #fff 0 1px, transparent 1.4px),
+    radial-gradient(circle at 91% 72%, #fff 0 .7px, transparent 1.2px);
+}
+h1::after {
+  background-image:
+    radial-gradient(circle at 26% 10%, #fff 0 .75px, transparent 1.2px),
+    radial-gradient(circle at 88% 33%, #fff 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 52% 95%, #fff 0 .7px, transparent 1.2px),
+    radial-gradient(circle at 16% 79%, #fff 0 .75px, transparent 1.2px);
+  opacity: .55;
+}
+@media (prefers-reduced-motion: no-preference) {
+  h1::before { animation: sparkle 2.4s ease-in-out infinite alternate; }
+  h1::after { animation: sparkle 3s .3s ease-in-out infinite alternate-reverse; }
+}
+@keyframes sparkle {
+  from { opacity: .22; }
+  to { opacity: 1; }
+}
+.bio { margin-top: .6rem; font-size: 1.125rem; }
+.location {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: 1.45rem;
+  font-size: .95rem;
+}
+.location svg { width: .9rem; height: .9rem; filter: drop-shadow(0 0 .25rem #fffb); }
+svg { display: block; fill: currentColor; }
+
+.socials { display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem; margin-top: 1.45rem; }
+.socials a, .share, .player-controls button {
+  display: grid;
+  place-items: center;
+  border-radius: .45rem;
+}
+.socials a { width: 2.75rem; height: 2.75rem; }
+.socials svg { width: 2.05rem; height: 2.05rem; filter: drop-shadow(0 0 .4rem #fff8); }
+.socials a:hover, .share:hover, .player-controls button:hover { background: #ffffff16; }
+
+.share { position: absolute; top: .65rem; right: .65rem; width: 2.75rem; height: 2.75rem; color: #c7c7c7; }
+.share svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+#share-status {
+  position: absolute;
+  z-index: 1;
+  top: 3.5rem;
+  right: .7rem;
+  max-width: calc(100% - 1.4rem);
+}
+#share-status:not(:empty) { padding: .6rem .7rem; border-radius: .5rem; background: #292929; font-size: .875rem; }
+
+.player {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .5rem .85rem;
+  padding: .85rem;
+  background: #111;
+}
+.track-cover { display: block; border-radius: .55rem; object-fit: cover; }
+.track { min-width: 0; }
+#track-title { font-size: 1rem; font-weight: 600; }
+audio { display: block; width: 100%; margin-top: .25rem; }
+.transport { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .5rem; }
+.transport span { color: #bdbdbd; font-size: .875rem; font-variant-numeric: tabular-nums; }
+.transport input { appearance: none; width: 100%; height: 1.75rem; margin: 0; background: transparent; cursor: pointer; }
+.transport input:disabled { cursor: default; }
+.transport input::-webkit-slider-runnable-track {
+  height: 2px;
+  background: linear-gradient(to right, #fff var(--progress, 0%), #606060 var(--progress, 0%));
+}
+.transport input::-moz-range-track { height: 2px; background: #606060; }
+.transport input::-moz-range-progress { height: 2px; background: #fff; }
+.transport input::-webkit-slider-thumb { appearance: none; width: .65rem; height: .65rem; margin-top: -.26rem; border-radius: 50%; background: #fff; }
+.transport input::-moz-range-thumb { width: .65rem; height: .65rem; border: 0; border-radius: 50%; background: #fff; }
+.player-controls { display: flex; align-items: center; }
+.player-controls button { width: 2rem; height: 2.75rem; color: #c7c7c7; }
+.player-controls svg { width: .95rem; height: .95rem; }
+.player-controls #play { width: 2.5rem; color: #fff; }
+#play svg { width: 1.55rem; height: 1.55rem; }
+.pause-symbol, .playing .play-symbol { display: none; }
+.playing .pause-symbol { display: initial; }
+.player-message { grid-column: 1 / -1; color: #bdbdbd; font-size: .875rem; }
+
+@media (max-width: 30rem) {
+  body { padding: .9rem; }
+  .identity { padding: 1.8rem .9rem 1.45rem; }
+  .avatar { width: 6.25rem; height: 6.25rem; }
+  .player { padding: .6rem; column-gap: .55rem; }
+  .track-cover { width: 2.75rem; height: 2.75rem; }
+  .player-controls button { width: 1.65rem; }
+  .player-controls #play { width: 2rem; }
+}
+
+@media (max-width: 22rem) {
+  .track { display: contents; }
+  .transport, audio { grid-column: 1 / -1; }
+  .player-controls { grid-column: 3; grid-row: 1; }
+}
