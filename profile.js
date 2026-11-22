@@ -7,8 +7,8 @@ const trackTitle = document.querySelector("#track-title");
 const cover = document.querySelector(".track-cover");
 const playerMessage = document.querySelector("#player-message");
 const tracks = [
-  { title: "Vultus", audio: "./vultus.mp3", cover: "./vultus-cover.webp" },
-  { title: "Low Cortisol", audio: "./Music%20laufei.mp3", cover: "./foto%20musica.jpg" },
+  { title: "Vultus", audio: "./assets/audio/vultus.mp3", cover: "./assets/images/vultus-cover.webp" },
+  { title: "Low Cortisol", audio: "./assets/audio/low-cortisol.mp3", cover: "./assets/images/low-cortisol-cover.jpg" },
 ];
 let trackIndex = 0;
 

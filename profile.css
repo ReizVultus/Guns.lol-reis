@@ -23,7 +23,7 @@ body::before {
   position: fixed;
   z-index: -1;
   inset: -.75rem;
-  background: linear-gradient(#0004, #0005), #101010 url("./reiss-background.webp") center / cover no-repeat;
+  background: linear-gradient(#0004, #0005), #101010 url("./assets/images/profile-background.webp") center / cover no-repeat;
   filter: blur(.32rem);
   pointer-events: none;
 }
