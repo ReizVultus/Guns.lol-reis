@@ -4,13 +4,7 @@ const seek = document.querySelector("#seek");
 const elapsed = document.querySelector("#elapsed");
 const duration = document.querySelector("#duration");
 const trackTitle = document.querySelector("#track-title");
-const cover = document.querySelector(".track-cover");
 const playerMessage = document.querySelector("#player-message");
-const tracks = [
-  { title: "Vultus", audio: "./assets/audio/vultus.mp3", cover: "./assets/images/vultus-cover.webp" },
-  { title: "Low Cortisol", audio: "./assets/audio/low-cortisol.mp3", cover: "./assets/images/low-cortisol-cover.jpg" },
-];
-let trackIndex = 0;
 
 function formatTime(seconds) {
   const wholeSeconds = Math.floor(seconds);
@@ -32,7 +26,7 @@ function updateTimeline() {
 function updatePlayButton() {
   const isPlaying = !audio.paused && !audio.ended;
   play.classList.toggle("playing", isPlaying);
-  play.setAttribute("aria-label", `${isPlaying ? "Pausar" : "Reproduzir"} ${tracks[trackIndex].title}`);
+  play.setAttribute("aria-label", `${isPlaying ? "Pausar" : "Reproduzir"} ${trackTitle.textContent}`);
 }
 
 function showPlayerMessage(message) {
@@ -45,7 +39,9 @@ async function playTrack() {
   try {
     await audio.play();
   } catch (error) {
-    if (error.name !== "AbortError") {
+    if (error.name === "NotAllowedError") {
+      showPlayerMessage("Use o botão de reprodução para ouvir Vultus.");
+    } else if (error.name !== "AbortError") {
       showPlayerMessage("Não foi possível reproduzir esta faixa.");
     }
   }
@@ -63,22 +59,6 @@ seek.addEventListener("input", () => {
   audio.currentTime = Number(seek.value);
 });
 
-function changeTrack(step) {
-  const shouldKeepPlaying = !audio.paused && !audio.ended;
-  trackIndex = (trackIndex + step + tracks.length) % tracks.length;
-  const track = tracks[trackIndex];
-  trackTitle.textContent = track.title;
-  cover.src = track.cover;
-  audio.src = track.audio;
-  showPlayerMessage("");
-  updateTimeline();
-  updatePlayButton();
-  if (shouldKeepPlaying) void playTrack();
-}
-
-document.querySelector("#previous").addEventListener("click", () => changeTrack(-1));
-document.querySelector("#next").addEventListener("click", () => changeTrack(1));
-
 for (const event of ["timeupdate", "loadedmetadata", "durationchange", "emptied"]) {
   audio.addEventListener(event, updateTimeline);
 }
@@ -86,12 +66,14 @@ for (const event of ["play", "pause", "ended", "emptied"]) {
   audio.addEventListener(event, updatePlayButton);
 }
 audio.addEventListener("error", () => showPlayerMessage("Esta faixa está indisponível."));
+audio.addEventListener("playing", () => showPlayerMessage(""));
 
-document.querySelector(".player-controls").hidden = false;
+play.hidden = false;
 document.querySelector(".transport").hidden = false;
 audio.hidden = true;
 updateTimeline();
 updatePlayButton();
+void playTrack();
 
 const share = document.querySelector("#share");
 const shareStatus = document.querySelector("#share-status");

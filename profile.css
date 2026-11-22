@@ -118,14 +118,14 @@ h1::after {
 svg { display: block; fill: currentColor; }
 
 .socials { display: flex; flex-wrap: wrap; justify-content: center; gap: .55rem; margin-top: 1.45rem; }
-.socials a, .share, .player-controls button {
+.socials a, .share, .play {
   display: grid;
   place-items: center;
   border-radius: .45rem;
 }
 .socials a { width: 2.75rem; height: 2.75rem; }
 .socials svg { width: 2.05rem; height: 2.05rem; filter: drop-shadow(0 0 .4rem #fff8); }
-.socials a:hover, .share:hover, .player-controls button:hover { background: #ffffff16; }
+.socials a:hover, .share:hover, .play:hover { background: #ffffff16; }
 
 .share { position: absolute; top: .65rem; right: .65rem; width: 2.75rem; height: 2.75rem; color: #c7c7c7; }
 .share svg { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
@@ -162,11 +162,8 @@ audio { display: block; width: 100%; margin-top: .25rem; }
 .transport input::-moz-range-progress { height: 2px; background: #fff; }
 .transport input::-webkit-slider-thumb { appearance: none; width: .65rem; height: .65rem; margin-top: -.26rem; border-radius: 50%; background: #fff; }
 .transport input::-moz-range-thumb { width: .65rem; height: .65rem; border: 0; border-radius: 50%; background: #fff; }
-.player-controls { display: flex; align-items: center; }
-.player-controls button { width: 2rem; height: 2.75rem; color: #c7c7c7; }
-.player-controls svg { width: .95rem; height: .95rem; }
-.player-controls #play { width: 2.5rem; color: #fff; }
-#play svg { width: 1.55rem; height: 1.55rem; }
+.play { width: 2.75rem; height: 2.75rem; }
+.play svg { width: 1.55rem; height: 1.55rem; }
 .pause-symbol, .playing .play-symbol { display: none; }
 .playing .pause-symbol { display: initial; }
 .player-message { grid-column: 1 / -1; color: #bdbdbd; font-size: .875rem; }
@@ -177,12 +174,10 @@ audio { display: block; width: 100%; margin-top: .25rem; }
   .avatar { width: 6.25rem; height: 6.25rem; }
   .player { padding: .6rem; column-gap: .55rem; }
   .track-cover { width: 2.75rem; height: 2.75rem; }
-  .player-controls button { width: 1.65rem; }
-  .player-controls #play { width: 2rem; }
 }
 
 @media (max-width: 22rem) {
   .track { display: contents; }
   .transport, audio { grid-column: 1 / -1; }
-  .player-controls { grid-column: 3; grid-row: 1; }
+  .play { grid-column: 3; grid-row: 1; }
 }

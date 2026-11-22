@@ -44,27 +44,19 @@
       <img class="track-cover" src="./assets/images/vultus-cover.webp" width="64" height="64" alt="">
       <div class="track">
         <p id="track-title">Vultus</p>
-        <audio id="audio" src="./assets/audio/vultus.mp3" preload="metadata" controls></audio>
+        <audio id="audio" src="./assets/audio/vultus.mp3" autoplay controls></audio>
         <div class="transport" hidden>
           <span id="elapsed">0:00</span>
           <input id="seek" type="range" min="0" max="1" value="0" step="0.1" aria-label="Posição na faixa" disabled>
           <span id="duration">–:––</span>
         </div>
       </div>
-      <div class="player-controls" hidden>
-        <button id="previous" type="button" aria-label="Faixa anterior">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h2v14H5zm3 7 11-7v14z"/></svg>
-        </button>
-        <button id="play" type="button" aria-label="Reproduzir Vultus">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path class="play-symbol" d="M8 4v16l12-8z"/>
-            <path class="pause-symbol" d="M6 4h4v16H6zm8 0h4v16h-4z"/>
-          </svg>
-        </button>
-        <button id="next" type="button" aria-label="Próxima faixa">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 5h2v14h-2zM5 5l11 7-11 7z"/></svg>
-        </button>
-      </div>
+      <button class="play" id="play" type="button" aria-label="Reproduzir Vultus" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path class="play-symbol" d="M8 4v16l12-8z"/>
+          <path class="pause-symbol" d="M6 4h4v16H6zm8 0h4v16h-4z"/>
+        </svg>
+      </button>
       <p class="player-message" id="player-message" role="status" hidden></p>
     </section>
   </main>
